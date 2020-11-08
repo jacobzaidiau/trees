@@ -21,6 +21,10 @@ public class Tree implements ITree {
     @Column(name = "height")
     private Long height;
 
+    public Tree() {
+
+    }
+
     public Tree(long id, String name, long height) {
         this.id = id;
         this.name = name;
