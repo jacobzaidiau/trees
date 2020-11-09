@@ -40,7 +40,7 @@ public class TreeApiControllerTest {
         this.treeList = new ArrayList<>();
         this.treeList.add(new Tree(1, "Kauri", 100));
         this.treeList.add(new Tree(2, "Rimu", 200));
-        this.treeList.add(new Tree(3, "Pohutukawa", 150));
+        this.treeList.add(new Tree(3, "Kowhai", 150));
     }
 
     @Test
