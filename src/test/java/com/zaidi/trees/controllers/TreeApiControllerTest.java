@@ -60,6 +60,6 @@ public class TreeApiControllerTest {
                 .perform(post("/").contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(tree)))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.name", is(tree.getName())))
-                .andExpect(jsonPath("$.height", is((int) tree.getHeight() + 1)));
+                .andExpect(jsonPath("$.height", is((int) tree.getHeight())));
     }
 }
