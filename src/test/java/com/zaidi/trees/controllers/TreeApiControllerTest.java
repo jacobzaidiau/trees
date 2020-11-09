@@ -43,23 +43,23 @@ public class TreeApiControllerTest {
         this.treeList.add(new Tree(3, "Kowhai", 150));
     }
 
-    /*
-     * 
-     * @Test void shouldGetAllTrees() throws Exception {
-     * given(treeService.getAllTrees()).willReturn(treeList);
-     * 
-     * this.mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(jsonPath(
-     * "$.size()", is(treeList.size()))); }
-     * 
-     * @Test void shouldCreateTree() throws Exception {
-     * given(treeService.createTree(any(Tree.class))).willAnswer((invocation) ->
-     * invocation.getArgument(0));
-     * 
-     * Tree tree = new Tree(4, "Kowhai", 101);
-     * 
-     * this.mockMvc .perform(post("/").contentType(MediaType.APPLICATION_JSON)
-     * .content(objectMapper.writeValueAsString(tree)))
-     * .andExpect(status().isOk()).andExpect(jsonPath("$.name", is(tree.getName())))
-     * .andExpect(jsonPath("$.height", is((int) tree.getHeight()))); }
-     */
+    @Test
+    void shouldGetAllTrees() throws Exception {
+        given(treeService.getAllTrees()).willReturn(treeList);
+
+        this.mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(jsonPath("$.size()", is(treeList.size())));
+    }
+
+    @Test
+    void shouldCreateTree() throws Exception {
+        given(treeService.createTree(any(Tree.class))).willAnswer((invocation) -> invocation.getArgument(0));
+
+        Tree tree = new Tree(4, "Kowhai", 101);
+
+        this.mockMvc
+                .perform(post("/").contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(tree)))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.name", is(tree.getName())))
+                .andExpect(jsonPath("$.height", is((int) tree.getHeight() + 1)));
+    }
 }
